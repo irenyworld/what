@@ -1,0 +1,32 @@
+<div class="container" style = "margin-top: 30px">
+    <% @posts.each do |post| %>
+        <p><%= post.title %> </p>
+        <p><%= post.content %> </p>
+        <p><%= post.created_at %></p>
+        <hr>
+        <% post.replies.each do |reply| %>
+            <%= reply.id %>
+            <%= reoly.content %>
+            
+        <%end%>
+        <form action="/home/<%=post.id%>/reply_create" method='post'>
+        <div class="form-group">
+        <input type="text" class="form-control" name="content" placeholder="reoly">
+      </div>
+       <button type="submit" class="btn btn-default">댓글</button>
+        </form>
+      
+        
+    <%end%>
+    
+    <form action="/home/create" method="post">
+      <div class="form-group">
+        <input type="text" class="form-control" name="title" placeholder="제목">
+      </div>
+      <div class="form-group">
+          <textarea class='form-control' name="content" placeholder="내용" rows=10></textarea>
+      </div>
+     
+      <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+</div>
