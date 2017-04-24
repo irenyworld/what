@@ -4,6 +4,9 @@ class HomeController < ApplicationController
   
   def improve
   end
+  
+  def memory
+  end
 
   def truthmyth
   end
@@ -25,7 +28,7 @@ class HomeController < ApplicationController
     post.save
 
     if post.save
-      redirect_to '/home/share'
+      redirect_to '/share'
     else
       
     render :text => post.errors.messages
@@ -36,11 +39,9 @@ class HomeController < ApplicationController
 
   
   def reply_create
-    reply = Reply.new
-    reply.content = params[:content]
-    reply.post_id = params[:id_of_post]
-    reply.save
-    redirect_to '/home/share'
+    @reply = Reply.new(post_id: params[:post_id], content: params[:content])
+    @reply.save
+    redirect_to :back
 
   end
   

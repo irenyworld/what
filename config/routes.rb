@@ -5,10 +5,10 @@ Rails.application.routes.draw do
   get '/truthmyth' => 'home#truthmyth'
   get '/contact' => 'home#contact'
   get '/dream' => 'home#dream'
-  
-  
-  get 'home/share' => 'home#share'
-  post 'home/create'
+  get '/memory' => 'home#memory'
+  get '/share' => 'home#share'
+  post ':post_id/create' => 'home#create'
+  post ':post_id/reply_create' => 'home#reply_create'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
